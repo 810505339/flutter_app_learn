@@ -59,42 +59,43 @@ class _AuthScreenState extends State<AuthScreen> {
                   fontWeight: FontWeight.w500,
                 )),
           ),
-          Container(
-            padding: const EdgeInsets.all(8),
-            color: GlobalVariables.background,
-            child: Form(
-                key: _signUpFormKey,
-                child: Column(
-                  children: [
-                    CustomTextField(
-                      controller: _userNameController,
-                      hintText: 'Name',
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    if (_auth == Auth.signIn)
+          if (_auth == Auth.signIn)
+            Container(
+              padding: const EdgeInsets.all(8),
+              color: GlobalVariables.background,
+              child: Form(
+                  key: _signUpFormKey,
+                  child: Column(
+                    children: [
+                      CustomTextField(
+                        controller: _userNameController,
+                        hintText: 'Name',
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
                       CustomTextField(
                         controller: _emailController,
                         hintText: 'Email',
                       ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    CustomTextField(
-                      controller: _passWordController,
-                      hintText: 'Password',
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    CustomButton(
-                      text: 'signUp',
-                      onTap: () {},
-                    )
-                  ],
-                )),
-          ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      CustomTextField(
+                        controller: _passWordController,
+                        hintText: 'Password',
+                        obscureText: true,
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      CustomButton(
+                        text: 'signUp',
+                        onTap: () {},
+                      ),
+                    ],
+                  )),
+            ),
           ListTile(
             leading: Radio(
                 value: Auth.signUp,
@@ -110,6 +111,36 @@ class _AuthScreenState extends State<AuthScreen> {
                   fontWeight: FontWeight.w500,
                 )),
           ),
+          if (_auth == Auth.signUp)
+            Container(
+              padding: const EdgeInsets.all(8),
+              color: GlobalVariables.background,
+              child: Form(
+                  key: _signUpFormKey,
+                  child: Column(
+                    children: [
+                      CustomTextField(
+                        controller: _userNameController,
+                        hintText: 'Name',
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      CustomTextField(
+                        controller: _passWordController,
+                        hintText: 'Password',
+                        obscureText: true,
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      CustomButton(
+                        text: 'signUp',
+                        onTap: () {},
+                      ),
+                    ],
+                  )),
+            ),
         ],
       )),
     );
