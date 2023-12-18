@@ -1,5 +1,16 @@
 import 'package:flutter/material.dart';
 
+Uri baseUrl(String path) {
+  String tempPath = '/api/$path';
+  Uri url = Uri(
+    scheme: 'http',
+    host: 'localhost:12345',
+    path: tempPath,
+  );
+
+  return url;
+}
+
 class GlobalVariables {
   //COLORS
   static const appBarGradient = LinearGradient(colors: [

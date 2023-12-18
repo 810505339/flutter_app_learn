@@ -1,6 +1,6 @@
 const express = require('express');
 const UserModule = require('../modules/user');
-
+const cryptoJs = require('crypto-js')
 const authRouter = express.Router();
 
 authRouter.post('/api/signup', async (req, res) => {
@@ -16,7 +16,7 @@ authRouter.post('/api/signup', async (req, res) => {
 
     let user = new UserModule({
       name,
-      password,
+      password: cryptoJs.SHA1(password),
       email
     })
     user = await user.save();

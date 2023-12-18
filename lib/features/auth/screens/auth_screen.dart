@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/common/widgets/custom_button.dart';
 import 'package:flutter_app/common/widgets/custom_textfield.dart';
 import 'package:flutter_app/constants/global_variables.dart';
+import '../server/auth_server.dart';
 
 enum Auth {
   signUp,
@@ -91,7 +92,16 @@ class _AuthScreenState extends State<AuthScreen> {
                       ),
                       CustomButton(
                         text: 'signUp',
-                        onTap: () {},
+                        onTap: () {
+                          if (_signUpFormKey.currentState!.validate()) {
+                            AuthServer server = AuthServer();
+                            server.signUpUser(
+                              email: _emailController.text,
+                              password: _passWordController.text,
+                              name: _userNameController.text,
+                            );
+                          }
+                        },
                       ),
                     ],
                   )),
